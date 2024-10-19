@@ -1,0 +1,26 @@
+{
+	"name": "compile-nodejs",
+	"version": "2.0.0",
+	"description": "JavaScript, and json parser, minifier, compressor, and beautifier toolkit.",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"dependencies": {
+		"@babel/core": "^7.24.0",
+		"@babel/preset-react": "^7.23.3",
+		"babel-minify": "^0.5.2",
+		"compile-nodejs": "^1.0.7",
+		"uglify-js": "^3.15.3"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+ssh://git@github.com:erickpd92/compile-nodejs.git"
+	},
+	"author": "Erick Prieto",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/erickpd92/compile-nodejs/issues"
+	},
+	"homepage": "https://github.com/erickpd92/compile-nodejs#readme"
+}
