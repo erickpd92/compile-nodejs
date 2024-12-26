@@ -6,8 +6,6 @@ const path = require("path");
 const UglifyJS = require("uglify-js");
 const {transformFileSync} = require("@babel/core");
 
-const minify = require("babel-minify");
-
 const source = function (_route) {
     return path.join(__dirname, "..", "..", _route);
 };
@@ -33,17 +31,11 @@ async function buildDirectory(_path) {
 async function buildMinify(_source, _destiny) {
     let dirname = path.dirname(_destiny);
     await buildDirectory(dirname);
-    let data = await fs.readFile(_source, "utf8");
-    try {
-        let result = UglifyJS.minify(data.trim());
-        await fs.writeFile(_destiny, result.code);
-    } catch (e) {
-        const transformedCode = transformFileSync(_source, {
-            presets: [require("@babel/preset-react")]
-        }).code;
-        const result = await minify(transformedCode);
-        await fs.writeFile(_destiny, result.code);
-    }
+    const transformedCode = transformFileSync(_source, {
+        presets: [require("@babel/preset-react")]
+    }).code;
+    const result =  UglifyJS.minify(transformedCode.trim());
+    await fs.writeFile(_destiny, result.code);
 }
 
 async function buildMinifyCss(_source, _destiny) {
